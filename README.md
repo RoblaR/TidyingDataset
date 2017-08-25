@@ -25,11 +25,3 @@ Triaxial Angular velocity from the gyroscope.
 A 561-feature vector with time and frequency domain variables.
 Its ,activity label.
 An identifier of the subject who carried out the experiment.
-
-RAW DATA
-'features.txt': List of all features. Sample: tBodyAcc-mean()-X/Y/Z , tBodyAcc-sdv()-X/Y/Z, tBodyAcc-mad()-X/Y/Z ...
-'activity_labels.txt': Links the class labels with their activity name. Sample: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS,SITTING, STANDING, LAYING
-'train/X_train.txt': Training set. Sample: -7.4441253e-001 8.5294738e-001
-'train/y_train.txt': Training labels. Sample: 3,4,5
-'test/X_test.txt': Test set. Sample: -7.4441253e-001 8.5294738e-001
-'test/y_test.txt': Test labels. Sample: 3,4,5
