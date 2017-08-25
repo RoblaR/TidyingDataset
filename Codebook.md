@@ -1,50 +1,424 @@
+The file tidyData.txt is a processed subset of the original Human Activity Recognition Using Smartphones Data Set produced by UCI Machine Learning repository. It followed a series of steps including:
 
-The goal of the project was to produce a tidy data set from the files provided. The commands which were used to produce the tidy setare stored in "run_analysis.R" file.
+1.Merging the training and the test subjects into a single dataset.
+2.Extracting only the measurements corresponding to the mean (Mean) and standard deviation (std) for each available measurement.
+3.Joining the subjects with the activities performed by the subjects with the measurements from the dataset.
+4.Evaluating the mean per subject and activity of the available meassurements and sorting by subject and activity.
+5.Saving the resulting dataset in a text file.
+6.Saving the dataset column names in a text file.
 
-Downloading and unzipping of appropriate files were done prior to coding.
+The resulting tidy dataset contains 66 columns of averaged information (per subject and activity) corresponding to the Mean and std of different meassurements for a total of 180 observations (30 subjects x 6 activities). These observations include meassurements in Time and Frequency of magnitude (Mag) and components in X,Y and Z direction for the linear acceleration (Acc), angular acceleration (Gyro), linear jerk (AccJerk) and angular jerk (GyroJerk) for both Body and Gravity components. Columns 1 and 2 correspond to the Subject and Activity.
 
-EXPERIMENTAL DESIGN AND BACKGROUND
-The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+The following lines describe each variable, column number, type of data and range of data for the tidy dataset file.
 
-The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+1. Subject
 
-DATASET ATTRIBUTE INFORMATION
-For each record in the dataset it is provided: 
-- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration. 
-- Triaxial Angular velocity from the gyroscope. 
-- A 561-feature vector with time and frequency domain variables. 
-- Its ,activity label. 
-- An identifier of the subject who carried out the experiment.
+Subjects that perform a set of activities
 
-RAW DATA
-- 'features.txt': List of all features.
-Sample: tBodyAcc-mean()-X/Y/Z , tBodyAcc-sdv()-X/Y/Z, tBodyAcc-mad()-X/Y/Z ...
-- 'activity_labels.txt': Links the class labels with their activity name.
-Sample: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS,SITTING, STANDING, LAYING
-- 'train/X_train.txt': Training set.
-Sample: -7.4441253e-001  8.5294738e-001
-- 'train/y_train.txt': Training labels.
-Sample: 3,4,5
-- 'test/X_test.txt': Test set.
-Sample: -7.4441253e-001  8.5294738e-001
-- 'test/y_test.txt': Test labels.
-Sample: 3,4,5
+[1,30] . Integer values representing a person.
 
-PROCESSED DATA
+2. Activity
 
-Values of Varible 'Activity' consist of data from “Y_train.txt” and “Y_test.txt”
-values of Varible 'Subject' consist of data from “subject_train.txt” and subject_test.txt"
-Values of Varibles 'Features' consist of data from “X_train.txt” and “X_test.txt”
-Names of Varibles Features come from “features.txt”
-Levels of Varible Activity come from “activity_labels.txt”
+Activities performed by the test and train subjects
 
+[LAYING, SITTING, STANDING, WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS]. String values representing activities.
 
-- activityTest,activityTrain,subjectTest,subjectTrain are data frames with one variable
-- featuresTest,featuresTrain are data frames with 561 variables
-- Data is a data frame of 68 variables that contains extracted measurements on mean and sdv on each measurement.
-  It also contains descriptive variable names.
-- Data2 is a data frame that contains an independent tidy data set with the average of each variable for each activity 
-  and each subject based on Data
+3. Time.BodyAcc.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+4. Time.BodyAcc.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+5. Time.BodyAcc.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+6. Time.BodyAcc.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+7. Time.BodyAcc.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+8. Time.BodyAcc.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+9. Time.GravityAcc.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+10. Time.GravityAcc.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+11. Time.GravityAcc.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+12. Time.GravityAcc.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+13. Time.GravityAcc.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+14. Time.GravityAcc.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+15. Time.BodyAccJerk.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+16. Time.BodyAccJerk.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+17. Time.BodyAccJerk.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+18. Time.BodyAccJerk.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+19. Time.BodyAccJerk.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+20. Time.BodyAccJerk.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+21. Time.BodyGyro.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+22. Time.BodyGyro.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+23. Time.BodyGyro.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+24. Time.BodyGyro.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+25. Time.BodyGyro.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+26. Time.BodyGyro.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+27. Time.BodyGyroJerk.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+28. Time.BodyGyroJerk.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+29. Time.BodyGyroJerk.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+30. Time.BodyGyroJerk.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+31. Time.BodyGyroJerk.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+32. Time.BodyGyroJerk.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+33. Time.BodyAccMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+34. Time.BodyAccMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+35. Time.GravityAccMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+36. Time.GravityAccMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+37. Time.BodyAccJerkMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+38. Time.BodyAccJerkMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+39. Time.BodyGyroMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+40. Time.BodyGyroMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+41. Time.BodyGyroJerkMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+42. Time.BodyGyroJerkMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Time domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+43. Frequency.BodyAcc.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+44. Frequency.BodyAcc.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+45. Frequency.BodyAcc.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+46. Frequency.BodyAcc.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+47. Frequency.BodyAcc.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+48. Frequency.BodyAcc.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+49. Frequency.BodyAccJerk.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+50. Frequency.BodyAccJerk.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+51. Frequency.BodyAccJerk.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+52. Frequency.BodyAccJerk.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+53. Frequency.BodyAccJerk.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+54. Frequency.BodyAccJerk.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+55. Frequency.BodyGyro.Mean.X
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the X direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+56. Frequency.BodyGyro.Mean.Y
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Y direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+57. Frequency.BodyGyro.Mean.Z
+
+Average value for the measurements of the Mean of the Body Linear Jerk in the Z direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+58. Frequency.BodyGyro.std.X
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the X direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+59. Frequency.BodyGyro.std.Y
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Y direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+60. Frequency.BodyGyro.std.Z
+
+Average value for the measurements of the Standard Deviation of the Body Linear Jerk in the Z direction in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+61. Frequency.BodyAccMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+62. Frequency.BodyAccMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+63. Frequency.BodyAccJerkMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+64. Frequency.BodyAccJerkMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+65. Frequency.BodyGyroMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+66. Frequency.BodyGyroMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+67. Frequency.BodyGyroJerkMag.Mean
+
+Average value for the measurements of the Magnitude of the Mean of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
+68. Frequency.BodyGyroJerkMag.std
+
+Average value for the measurements of the Magnitude of the Standard Deviation of the Body Linear Jerk in the Frequency domain for a given Subject doing a specific Activity
+
+[-1.0,1.0] . Normalized floating point values.
+
 
 
 
